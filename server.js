@@ -61,7 +61,7 @@ app.all('/post', function (req, res, next) {
         res.end('HTTP method not allowed.');
     } else {
         const cookies = cookie.parse(req.headers.cookie || '');
-        if (cookies.authorized === "true" && cookies.userId == `${user.id}`) {
+        if (cookies && cookies.authorized === "true" && cookies.userId == `${user.id}`) {
             jsonBody(req, res, function (err, body) {
 
                 const path = `./files/${body.filename}.txt`;
